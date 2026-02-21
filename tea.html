@@ -1,0 +1,501 @@
+ <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>tea guide</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="">
+<head>
+    <title>Tea Guide</title>
+    <link rel="icon" href="teapot.ico" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="teapot_dm.ico" media="(prefers-color-scheme: dark)">
+    <style>
+
+        :root {
+            --bg: #e6e1e1;
+            --fg: #141414;
+            --panel: #faf5f5;
+        }
+
+        @font-face {
+            font-family: 'KarioDuplexVar';
+            src: URL('Kario39C3Var-Roman.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'OfficerSansCond';
+            src: URL('fonts/OfficerSansCondWeb-Regular.woff') format('woff');
+            src: URL('fonts/OfficerSansCondWeb-Regular.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'OfficerSansCond';
+            font-weight: bold;
+            font-style: italic;
+            src: URL('fonts/OfficerSansCondWeb-BoldItalic.woff') format('woff');
+            src: URL('fonts/OfficerSansCondWeb-BoldItalic.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'OfficerSansCond';
+            font-weight: bold;
+            src: URL('fonts/OfficerSansCondWeb-Bold.woff') format('woff');
+            src: URL('fonts/OfficerSansCondWeb-Bold.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'OfficerSansCond';
+            font-style: italic;
+            src: URL('fonts/OfficerSansCondWeb-RegularItalic.woff') format('woff');
+            src: URL('fonts/OfficerSansCondWeb-RegularItalic.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'OfficerSans';
+            src: URL('fonts/OfficerSansWeb-Regular.woff') format('woff');
+            src: URL('fonts/OfficerSansWeb-Regular.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'OfficerSans';
+            font-weight: bold;
+            font-style: italic;
+            src: URL('fonts/OfficerSansWeb-BoldItalic.woff') format('woff');
+            src: URL('fonts/OfficerSansWeb-BoldItalic.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'OfficerSans';
+            font-weight: bold;
+            src: URL('fonts/OfficerSansWeb-Bold.woff') format('woff');
+            src: URL('fonts/OfficerSansWeb-Bold.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'OfficerSans';
+            font-style: italic;
+            src: URL('fonts/OfficerSansWeb-RegularItalic.woff') format('woff');
+            src: URL('fonts/OfficerSansWeb-RegularItalic.woff2') format('woff2');
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Roboto", system-ui, sans-serif;
+            padding: 1rem;
+            background-color: var(--bg);
+            color: var(--fg);
+            font-size: 1rem;
+        }
+
+        .dark-mode {
+            --bg: #141414;
+            --fg: #e6e1e1;
+            --panel: #1e1e1e;
+        }
+
+        .main {
+            background-color: var(--panel);
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+
+        .content{
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 10%;
+            padding-bottom: 10%;
+        }
+
+        .pill {
+            --pill-width: 90px;
+            width: var(--pill-width);
+            height: 44px;
+            border-radius: 999px;
+            border: 2px solid var(--fg);
+            background: var(--panel);
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pill::before {
+            content: "test";
+            position: absolute;
+            height: 36px;
+            width: 36px;
+            top: 2px;
+            left: 2px;
+            background: var(--fg);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .dark-label {
+            width: var(--pill-width);
+            display: block;
+            font-family: 'KarioDuplexVar', sans-serif;
+            font-weight: 900;
+            font-size: 93%;
+            letter-spacing: 0.05em;
+            margin-top: 0px;
+        }
+
+        .dark-mode .pill {
+            background: var(--fg);
+        }
+
+        .dark-mode .pill::before {
+            transform: translateX(44px);
+            background: var(--bg);
+        }
+
+        h1 {
+            background-color: var(--fg);
+            color: var(--bg);
+            padding-left: 1rem;
+            font-family: 'KarioDuplexVar', sans-serif;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            background-color: var(--fg);
+            color: var(--bg);
+            padding-left: 0.5rem;
+            font-family: 'KarioDuplexVar', sans-serif;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+        }
+
+        .box {
+            background-color: var(--bg);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo svg {
+            width: 120px;
+            height: auto;
+            fill: var(--fg);
+        }
+
+        .top-bar {
+            position: relative;
+            height: 5rem;
+            margin-top: -4rem;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+
+        .toggle-group {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .row-50 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 2rem;
+        }
+
+        .row-50 img {
+            width: 100%;
+            height: auto;
+            
+        }
+
+        .row-50 > .box:last-child {
+            display: flex;
+            align-items: center;      /* vertical center */
+            justify-content: center;  /* horizontal center (optional) */
+        }
+
+        .side-nav {
+            position: fixed;
+            left: 2rem;
+            top: 4rem;   /* distance from top */
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            font-family: 'KarioDuplexVar', sans-serif;
+            font-weight: 900;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+        }
+
+        .side-nav a {
+            text-decoration: none;
+            color: var(--fg);
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+
+        .side-nav a:hover {
+            opacity: 1;
+        }
+
+        h3 {
+            font-family: 'KarioDuplexVar', sans-serif;
+            font-weight: 900;
+        }
+
+        .brew-card {
+            background: var(--bg);
+            padding: 1rem;
+            font-family: 'KarioDuplexVar', sans-serif;
+            font-weight: 300;
+        }
+
+        .brew-spec {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0;
+        }
+
+        .brew-spec li {
+            margin-bottom: 0.3rem;
+        }
+
+        .brew-notes {
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .box p {
+            font-family: 'KarioDuplexVar', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin:0.5rem;
+        }
+
+
+        .img-light {
+            display: block;
+        }
+
+        .img-dark {
+            display: none;
+        }
+
+        .dark-mode .img-light {
+            display: none;
+        }
+
+        .dark-mode .img-dark {
+            display: block;
+        }
+
+    </style>
+    <script>function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+        }
+    </script>
+</head>
+<body>
+<nav class="side-nav">
+    <a href="#about">ABOUT</a><br>
+    <a href="#gongfu">GONG FU</a><br>
+    <a href="#brewing">BREW</a>
+</nav>
+<div class="main">
+    <div class="content">
+        <div class="top-bar">
+
+            <div class="toggle-group">
+                <button class="pill" onclick="myFunction()"></button>
+                <p class="dark-label">DARKMODE</p>
+            </div>
+
+            <div class="logo">
+            <svg viewBox="0 0 270 150" xmlns="http://www.w3.org/2000/svg"> <path d="m1347 1419c-50-12-77-27-77-43 0-7 18-36 40-64 22-27 40-52 40-54 0-3-53-8-117-12-236-14-367-41-411-86-28-27-150-282-184-382l-19-56-32 10c-50 18-109 86-136 158-54 143-89 198-146 228-33 17-275 31-275 16 0-5 29-24 65-43 69-35 122-88 151-150 10-20 33-92 51-161 19-69 45-149 59-178 33-68 109-144 174-173 44-20 55-31 78-78 18-36 48-73 91-110 36-31 83-75 105-99 47-50 108-72 273-98 150-23 526-23 676 0 168 26 232 50 287 104 26 26 74 71 108 100 38 33 69 70 84 101 13 28 34 54 48 61 61 29 193 123 244 175 32 33 70 85 88 123 28 57 33 77 33 139 0 56-4 77-21 100-47 64-142 88-406 99l-138 6-32 61c-26 49-40 64-75 79-50 22-202 45-367 56l-119 7 35 45c18 25 37 51 41 57 31 51-103 89-216 62zm1083-490c19-6 43-19 53-27 58-50-33-249-158-343-28-21-55-39-58-39-4 0-7 13-7 28 0 59-44 200-115 366l-17 39 134-6c73-3 149-11 168-18z" transform="matrix(.1 0 0 -.1 0 150)"/> </svg>
+            </div>
+        </div>
+        
+        <h1>TEA SET - README.MD</h1>
+
+        <div class="row-50">
+            <div class="box">
+                <h2 id="about">ABOUT THIS PROJECT</h2>
+                <p>I put this together because I carry a lovely little tea set with me to friends’ places and events.<br>It gets used often, and I wanted people to feel comfortable brewing with it even when I am not hovering nearby.<br><br>
+                    This wiki is simply a reference: Clear temperatures, short notes, and gentle guidance so anyone can pick it up and host a session without needing instructions from me first!<br>
+                    Tea is better when it is shared, and it is even better when it feels easy.<br><br>
+                    All Creatures Welcome!
+                </p>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img class="img-light" 
+                        src="hot_light.png" 
+                        alt="">
+
+                    <img class="img-dark" 
+                        src="hot_dark.png" 
+                        alt="">
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="box">
+            <h2 id="gongfu">GONG FU</h2>
+            <p>
+                Gong Fu Cha is a traditional way of brewing tea using more leaves, less water, and short, repeated infusions.<br>
+                instead of making one large cup, you brew the same leaves several times.<br>
+                Each infusion tastes a little different, so you can notice how the tea develops.<br><br>
+                A Gong Fu session can reflect your mood.<br>
+                On a quiet morning, it centres you. In the afternoon, it revives. In grief, it comforts. In joy, it amplifies.<br><br>
+
+                There are a few rules Gong Fu Cha. However my version isn't as strict as <href a="https://en.wikipedia.org/wiki/Gongfu_tea">the traditional one</href>.<br>
+                If I am the tea master (the one who takes care of the pouring) of the session, I just heat up the water (to the right temperature, this is important) and then pour it into my gaiwan with the leaves over and over again until the tea is through.<br>
+                I use tiny cups for shared tea ceremonies and a slightly bigger one for ones i do alone.<br><br>
+
+                For shared tea ceremonies one very useful way to clearly communicate wether you still want tea is to turn your cup upside down if you're done.<br>
+                That's what the House of Tea at CCC encourages and it's been wonderfully effective.
+            </p>
+        </div>
+        <br>
+        <div class="box">
+            <h2 id="brewing">BREWING INSTRUCTIONS</h2>
+            <p>
+                Here you can find all instructions to the different teas I have and how to brew them :&#41;
+            </p>
+            <div class="brew-card">
+                <h3>KABUSECHA FUKAMUSHI</h3>
+
+                <ul class="brew-spec">
+                    <li><strong>temperature</strong> — 60–70°c</li>
+                    <li><strong>time</strong> — 60–90 sec</li>
+                    <li><strong>leaf ratio</strong> — 5g / 100ml</li>
+                    <li><strong>infusions</strong> — 3–4</li>
+                </ul>
+
+                <p class="brew-notes">
+                    This tea prefers cooler water and a little patience. If it tastes bitter or harsh, the water was likely too hot.<br>
+                    If it feels too light, add a bit more leaf rather than extending the time.<br>
+                    The first infusion will be rich and smooth, and the following ones will feel brighter.
+                </p>
+            </div>
+
+            <div class="brew-card">
+                <h3>GYOKURO YABUKITA</h3>
+
+                <ul class="brew-spec">
+                    <li><strong>temperature</strong> — 50–60°c</li>
+                    <li><strong>time</strong> — 90–120 sec, 20–30 sec (after)</li>
+                    <li><strong>leaf ratio</strong> — 5–6g / 100ml</li>
+                    <li><strong>infusions</strong> — 3–4</li>
+                </ul>
+
+                <p class="brew-notes">
+                    Use low temperature and take your time with the first steep.<br>
+                    If it turns sharp or overly grassy, lower the heat next time. If it feels thin, increase the leaf slightly.<br>
+                    This tea rewards care and gives a deep, savory sweetness when treated gently.
+                </p>
+            </div>
+
+            <div class="brew-card">
+                <h3>BANCHA</h3>
+
+                <ul class="brew-spec">
+                    <li><strong>temperature</strong> — 85–95°c</li>
+                    <li><strong>time</strong> — 30–45 sec</li>
+                    <li><strong>leaf ratio</strong> — 4–5g / 100ml</li>
+                    <li><strong>infusions</strong> — 3–4</li>
+                </ul>
+
+                <p class="brew-notes">
+                    A relaxed, everyday tea that handles small mistakes well.<br>
+                    If it feels flat, try a touch more leaf. If it becomes slightly bitter, shorten the next infusion.<br>
+                    It is simple, steady, and meant to be enjoyed without overthinking it.
+                </p>
+            </div>
+
+            <div class="brew-card">
+                <h3>MATCHA GENMAICHA [not a traditional Gong Fu tea, meh]</h3>
+
+                <ul class="brew-spec">
+                    <li><strong>temperature</strong> — 75–80°c</li>
+                    <li><strong>time</strong> — 20–30 sec</li>
+                    <li><strong>leaf ratio</strong> — 4–5g / 100ml</li>
+                    <li><strong>infusions</strong> — 2–3</li>
+                </ul>
+
+                <p class="brew-notes">
+                    Shake the container lightly before measuring so the matcha powder is evenly distributed.<br>
+                    Keep the steeps short to avoid bitterness from the green tea base.<br>
+                    If it feels too intense, lower the temperature slightly.<br>
+                    The goal is balance between toasted rice warmth and fresh green notes.
+                </p>
+            </div>
+
+            <div class="brew-card">
+                <h3>MILKY OOLONG [not vegan]</h3>
+
+                <ul class="brew-spec">
+                    <li><strong>temperature</strong> — 90–95°c</li>
+                    <li><strong>time</strong> — 20–30 sec (first), +5–10 sec each round</li>
+                    <li><strong>leaf ratio</strong> — 5g / 100ml</li>
+                    <li><strong>infusions</strong> — 5-7</li>
+                </ul>
+
+                <p class="brew-notes">
+                    Start with short infusions and let the leaves open gradually.<br>
+                    If the flavor feels muted, give it another round rather than extending the first steep too long.<br>
+                    If it becomes heavy or overly strong, shorten the time. The texture should feel smooth and rounded, not overpowering.
+                </p>
+            </div>
+
+            <div class="brew-card">
+                <h3>KUKICHA [non-caffeinated]</h3>
+
+                <ul class="brew-spec">
+                    <li><strong>temperature</strong> — 80–90°c</li>
+                    <li><strong>time</strong> — 25–40 sec</li>
+                    <li><strong>leaf ratio</strong> — 4g / 100ml</li>
+                    <li><strong>infusions</strong> — 3–4</li>
+                </ul>
+
+                <p class="brew-notes">
+                    Light, woody, and very forgiving. If it tastes a little thin, try using slightly more leaf next time.<br>
+                    If it turns sharp, shorten the steep rather than lowering the temperature.<br>
+                    It is an easy tea to adjust and a good one to experiment with.
+                </p>
+            </div>
+
+            <div class="brew-card">
+                <h3>JASMINE GREEN TEA</h3>
+
+                <ul class="brew-spec">
+                    <li><strong>temperature</strong> — 80–85°c</li>
+                    <li><strong>time</strong> — 20–30 sec</li>
+                    <li><strong>leaf ratio</strong> — 4g / 100ml</li>
+                    <li><strong>infusions</strong> — 3–4</li>
+                </ul>
+
+                <p class="brew-notes">
+                    Keep the steeps short so the floral aroma stays clear and bright.<br>
+                    If it tastes bitter, the water was likely too hot or the infusion too long.<br>
+                    Aim for gentle extraction so the jasmine scent stays soft and natural.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html> 
