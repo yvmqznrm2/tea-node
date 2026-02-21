@@ -273,7 +273,7 @@
             
             .top-bar {
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: space-between;
                 height: auto;
                 margin-top: 0;
@@ -281,6 +281,9 @@
     
             .toggle-group {
                 position: static;
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
             }
 
             .logo {
