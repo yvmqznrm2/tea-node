@@ -269,40 +269,53 @@
             }
 
             .content {
-                padding-left: 1rem;
-                padding-right: 1rem;
-                padding-top: 2rem;
-                padding-bottom: 2rem;
-            }
-
-            .row-50 {
-                grid-template-columns: 1fr;
-            }
-
-            .side-nav {
-                position: static;
-                flex-direction: row;
-                justify-content: center;
-                font-size: 0.75rem;
-                margin-bottom: 1rem;
+                padding: 1.5rem 1rem;
             }
 
             .top-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 height: auto;
                 margin-top: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .logo {
-                position: static;
-                transform: none;
+                padding: 0 0.5rem;
             }
 
             .toggle-group {
                 position: static;
+            }
+
+            .logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .pill {
+                width: 70px;
+                height: 34px;
+            }
+
+            .pill::before {
+                width: 26px;
+                height: 26px;
+                top: 2px;
+                left: 2px;
+            }
+
+            .row-50 {
+                grid-template-columns: 1fr;
+                row-gap: 1.5rem;
+            }
+
+            .side-nav {
+                position: static;
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.5rem;
+                font-size: 0.75rem;
+                margin-bottom: 1rem;
             }
 
             h1 {
@@ -311,8 +324,7 @@
 
             h2 {
                 font-size: 1rem;
-           }
-
+            }
         }
 
     </style>
