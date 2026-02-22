@@ -9,347 +9,126 @@
 <link rel="icon" href="teapot_dm.ico" media="(prefers-color-scheme: dark)">
     <style>
 
-        :root {
-            --bg: #e6e1e1;
-            --fg: #141414;
-            --panel: #faf5f5;
-        }
+:root {
+    --bg: #e6e1e1;
+    --fg: #141414;
+    --panel: #faf5f5;
+    --link: #ff3719;
+}
 
-        @font-face {
-            font-family: 'KarioDuplexVar';
-            src: URL('fonts/Kario39C3Var-Roman.ttf') format('truetype');
-        }
+@font-face {
+    font-family: 'KarioDuplexVar';
+    src: URL('fonts/Kario39C3Var-Roman.ttf') format('truetype');
+}
 
-        @font-face {
-            font-family: 'OfficerSans';
-            src: URL('fonts/OfficerSansWeb-Regular.woff') format('woff');
-            src: URL('fonts/OfficerSansWeb-Regular.woff2') format('woff2');
-        }
+@font-face {
+    font-family: 'OfficerSans';
+    src: URL('fonts/OfficerSansWeb-Regular.woff') format('woff');
+    src: URL('fonts/OfficerSansWeb-Regular.woff2') format('woff2');
+}
 
-        @font-face {
-            font-family: 'OfficerSans';
-            font-weight: bold;
-            src: URL('fonts/OfficerSansWeb-Bold.woff') format('woff');
-            src: URL('fonts/OfficerSansWeb-Bold.woff2') format('woff2');
-        }
+@font-face {
+    font-family: 'OfficerSans';
+    font-weight: bold;
+    src: URL('fonts/OfficerSansWeb-Bold.woff') format('woff');
+    src: URL('fonts/OfficerSansWeb-Bold.woff2') format('woff2');
+}
 
-        @font-face {
-            font-family: 'OfficerSans';
-            font-style: italic;
-            src: URL('fonts/OfficerSansWeb-RegularItalic.woff') format('woff');
-            src: URL('fonts/OfficerSansWeb-RegularItalic.woff2') format('woff2');
-        }
+@font-face {
+    font-family: 'OfficerSans';
+    font-style: italic;
+    src: URL('fonts/OfficerSansWeb-RegularItalic.woff') format('woff');
+    src: URL('fonts/OfficerSansWeb-RegularItalic.woff2') format('woff2');
+}
 
-        body {
-            font-family: 'OfficerSans', sans-serif;
-            padding: 1rem;
-            background-color: var(--bg);
-            color: var(--fg);
-         }
+body {
+    font-family: 'OfficerSans', sans-serif;
+    padding: 1rem;
+    background-color: var(--bg);
+    color: var(--fg);
+}
 
-        .dark-mode {
-            --bg: #141414;
-            --fg: #e6e1e1;
-            --panel: #1e1e1e;
-        }
+.dark-mode {
+    --bg: #141414;
+    --fg: #e6e1e1;
+    --panel: #1e1e1e;
+}
 
-        .main {
-            background-color: var(--panel);
-            margin-left: 20%;
-            margin-right: 20%;
-        }
+.main {
+    background-color: var(--panel);
+    margin-left: 20%;
+    margin-right: 20%;
+}
 
-        .content{
-            padding-left: 5%;
-            padding-right: 5%;
-            padding-top: 10%;
-            padding-bottom: 10%;
-        }
+.content{
+    padding: 5% 5% 10% 5%;
+}
 
-        .pill {
-            --pill-width: 90px;
-            width: var(--pill-width);
-            height: 44px;
-            border-radius: 999px;
-            border: 2px solid var(--fg);
-            background: var(--panel);
-            position: relative;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+/* content links only */
+.box a {
+    color: var(--link);
+    text-decoration: underline;
+}
 
-        .pill::before {
-            content: "";
-            position: absolute;
-            height: 36px;
-            width: 36px;
-            top: 2px;
-            left: 2px;
-            background: var(--fg);
-            border-radius: 50%;
-            transition: 0.3s;
-        }
+.box a:visited {
+    color: var(--link);
+}
 
-        .dark-label {
-            width: var(--pill-width);
-            display: block;
-            font-family: 'KarioDuplexVar', sans-serif;
-            font-weight: 900;
-            font-size: 93%;
-            letter-spacing: 0.05em;
-            margin-top: 0px;
-        }
+.box a:hover {
+    opacity: 0.8;
+}
 
-        .dark-mode .pill {
-            background: var(--fg);
-        }
+/* navbar stays neutral */
+.side-nav {
+    position: fixed;
+    left: 2rem;
+    top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: 'KarioDuplexVar', sans-serif;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+}
 
-        .dark-mode .pill::before {
-            transform: translateX(44px);
-            background: var(--bg);
-        }
+.side-nav a {
+    text-decoration: none;
+    color: var(--fg);
+    opacity: 0.6;
+    transition: 0.2s;
+}
 
-        h1 {
-            background-color: var(--fg);
-            color: var(--bg);
-            padding-left: 1rem;
-            font-family: 'KarioDuplexVar', sans-serif;
-            font-weight: 900;
-            letter-spacing: 0.05em;
-        }
+.side-nav a:hover {
+    opacity: 1;
+}
 
-        h2 {
-            background-color: var(--fg);
-            color: var(--bg);
-            padding-left: 0.5rem;
-            font-family: 'KarioDuplexVar', sans-serif;
-            font-weight: 900;
-            letter-spacing: 0.05em;
-        }
+h1, h2 {
+    background-color: var(--fg);
+    color: var(--bg);
+    padding-left: 1rem;
+    font-family: 'KarioDuplexVar', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+}
 
-        .box {
-            background-color: var(--bg);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
+.box {
+    background-color: var(--bg);
+    padding: 1rem;
+}
 
-        .logo {
-            display: flex;
-            justify-content: center;
-        }
+.logo svg {
+    width: 120px;
+    fill: var(--fg);
+}
 
-        .logo svg {
-            width: 120px;
-            height: auto;
-            fill: var(--fg);
-        }
+.img-light { display: block; }
+.img-dark { display: none; }
 
-        .top-bar {
-            position: relative;
-            height: 5rem;
-            margin-top: -4rem;
-        }
+.dark-mode .img-light { display: none; }
+.dark-mode .img-dark { display: block; }
 
-        .logo {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-        }
-
-        .toggle-group {
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        .row-50 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 2rem;
-        }
-
-        .row-50 img {
-            width: 100%;
-            height: auto;
-            
-        }
-
-        .row-50 > .box:last-child {
-            display: flex;
-            align-items: center;      /* vertical center */
-            justify-content: center;  /* horizontal center (optional) */
-        }
-
-        .side-nav {
-            position: fixed;
-            left: 2rem;
-            top: 4rem;   /* distance from top */
-
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-
-            font-family: 'KarioDuplexVar', sans-serif;
-            font-weight: 900;
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-        }
-
-        .side-nav a {
-            text-decoration: none;
-            color: var(--fg);
-            opacity: 0.6;
-            transition: 0.2s;
-        }
-
-        .side-nav a:hover {
-            opacity: 1;
-        }
-
-        h3 {
-            font-family: 'KarioDuplexVar', sans-serif;
-            font-weight: 900;
-            display: inline;
-        }
-
-        .brew-card {
-            background: var(--bg);
-            padding: 1rem;
-            font-family: 'KarioDuplexVar', sans-serif;
-            font-weight: 300;
-        }
-
-        .brew-spec {
-            list-style: none;
-            padding: 0;
-            margin: 0.5rem 0;
-        }
-
-        .brew-spec li {
-            margin-bottom: 0.3rem;
-        }
-
-        .brew-notes {
-            margin-top: 0.5rem;
-            font-style: italic;
-        }
-
-        .box p {
-            font-family: 'OfficerSans', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            margin:0.5rem;
-        }
-
-
-        .img-light {
-            display: block;
-        }
-
-        .img-dark {
-            display: none;
-        }
-
-        .dark-mode .img-light {
-            display: none;
-        }
-
-        .dark-mode .img-dark {
-            display: block;
-        }
-        
-        .box a {
-            color: #ff3719;
-        }
-
-        .dark-mode .box a {
-            color: #ff3719;
-        }
-
-        @media (max-width: 768px) {
-
-            .main {
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .content {
-                padding: 1.5rem 1rem;
-            }
-            
-            .top-bar {
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
-                height: auto;
-                margin-top: 0;
-            }
-    
-            .toggle-group {
-                position: static;
-                display: flex;
-                flex-direction: column;
-                gap: 0.25rem;
-            }
-
-            .logo {
-                position: static;
-                transform: none;
-                margin-left: auto;
-                margin-top: -5%;
-            }
-
-
-            .pill {
-                    --pill-width: 90px;
-                width: var(--pill-width);
-                height: 44px;
-            }
-    
-            .pill::before {
-                content: "";
-                position: absolute;
-                height: 36px;
-                width: 36px;
-                top: 2px;
-                left: 2px;
-                background: var(--fg);
-                border-radius: 50%;
-                transition: 0.3s;
-            }
-
-            .dark-mode .pill::before {
-                transform: translateX(44px);
-            }
-
-            .row-50 {
-                grid-template-columns: 1fr;
-                row-gap: 1.5rem;
-            }
-
-            .side-nav {
-                position: static;
-                width: 100%;
-                flex-direction: row;
-                justify-content: center;
-                gap: 1.5rem;
-                font-size: 0.75rem;
-                margin-bottom: 1rem;
-            }
-
-            h1 {
-                font-size: 1.4rem;
-            }
-
-            h2 {
-                font-size: 1rem;
-            }
-        }
-
-    </style>
+</style>
     <script>function myFunction() {
         var element = document.body;
         element.classList.toggle("dark-mode");
@@ -410,7 +189,7 @@
                 A Gong Fu session can reflect your mood.<br>
                 On a quiet morning, it centres you. In the afternoon, it revives. In grief, it comforts. In joy, it amplifies.<br><br>
 
-                There are a few rules Gong Fu Cha. However my version isn't as strict as <a style="color: #ff3719; text-decoration: underline;" href="https://en.wikipedia.org/wiki/Gongfu_tea" target="_blank">the traditional way</a>.<br>
+                There are a few rules to Gong Fu Cha. However my version isn't as strict as <a style="color: #ff3719; text-decoration: underline;" href="https://en.wikipedia.org/wiki/Gongfu_tea" target="_blank">the traditional way</a>.<br>
                 If I am the tea master (the one who takes care of the pouring) of the session, I just heat up the water (to the right temperature, this is important) and then pour it into my gaiwan with the leaves over and over again until the tea is through.<br>
                 I use tiny cups for shared tea ceremonies and a slightly bigger one for ones i do alone.<br><br>
 
